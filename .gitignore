@@ -5,5 +5,6 @@
 codecept.phar
 
 # Composer
-vendor
 composer.lock
+vendor
+
