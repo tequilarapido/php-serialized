@@ -1,0 +1,9 @@
+# IDE
+.idea
+
+# Codeception
+codecept.phar
+
+# Composer
+vendor
+composer.lock
