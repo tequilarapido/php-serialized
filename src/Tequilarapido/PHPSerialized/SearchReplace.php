@@ -55,7 +55,7 @@ class SearchReplace
                             $subject->$key = str_replace($search, $replace, $value);
                         } // Inserts in array
                         else {
-                            $data[$key] = str_replace($search, $replace, $value);
+                            $subject[$key] = str_replace($search, $replace, $value);
                         }
                     }
                 }
