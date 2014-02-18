@@ -33,7 +33,7 @@ class SearchReplace
         }
     }
 
-    public function replace($search, $replace, &$subject)
+    protected function replace($search, $replace, &$subject)
     {
         // Cannot unserialize incomplete object ?
         if ($this->isIncompleteObject($subject)) {
