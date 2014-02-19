@@ -4,6 +4,10 @@ use Tequilarapido\PHPSerialized\SearchReplace;
 
 class SearchReplaceTest extends \Codeception\TestCase\Test
 {
+
+    static $realWorldExample_from = 'wordpress-381.dev';
+    static $realWorldExample_to = 'www.wordpress-381.com';
+
     /**
      * @var \CodeGuy
      */
@@ -37,7 +41,36 @@ class SearchReplaceTest extends \Codeception\TestCase\Test
         $result = $sr->run('email@example.com', 'email@anotherdomain.com', $serialized);
         $unusableObject = (array)unserialize($result);
         $this->assertEquals($unusableObject['email'], 'email@example.com');
+    }
 
+    public function test_replace_on_a_realworldexample_phpobject()
+    {
+        $input = 'O:8:"stdClass":2:{s:4:"type";s:17:"This is an object";s:3:"url";s:41:"http://wordpress-381.dev/uri/to/resource/";}';
+        $expected = 'O:8:"stdClass":2:{s:4:"type";s:17:"This is an object";s:3:"url";s:45:"http://www.wordpress-381.com/uri/to/resource/";}';
+
+        $sr = new SearchReplace();
+        $result = $sr->run(static::$realWorldExample_from, static::$realWorldExample_to, $input);
+        $this->assertEquals($result, $expected);
+    }
+
+    public function test_replace_on_a_realworldexample_phparray()
+    {
+        $input = 'a:2:{s:4:"type";s:16:"This is an array";s:3:"url";s:41:"http://wordpress-381.dev/uri/to/resource/";}';
+        $expected = 'a:2:{s:4:"type";s:16:"This is an array";s:3:"url";s:45:"http://www.wordpress-381.com/uri/to/resource/";}';
+
+        $sr = new SearchReplace();
+        $result = $sr->run(static::$realWorldExample_from, static::$realWorldExample_to, $input);
+        $this->assertEquals($result, $expected);
+    }
+
+    public function test_replace_on_a_realworldexample_json()
+    {
+        $input = '{"type":"This is an object","url":"http://wordpress-381.dev/uri/to/resource/"}';
+        $expected = '{"type":"This is an object","url":"http://www.wordpress-381.com/uri/to/resource/"}';
+
+        $sr = new SearchReplace();
+        $result = $sr->run(static::$realWorldExample_from, static::$realWorldExample_to, $input);
+        $this->assertEquals($result, $expected);
     }
 
 
