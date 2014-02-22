@@ -1,6 +1,10 @@
 # Tequilarapido/PHPSerialized
 
 [![Build Status](https://travis-ci.org/tequilarapido/php-serialized.png?branch=master)](https://travis-ci.org/tequilarapido/php-serialized)
+[![Latest Stable Version](https://poser.pugx.org/tequilarapido/php-serialized/v/stable.png)](https://packagist.org/packages/tequilarapido/php-serialized) 
+[![Total Downloads](https://poser.pugx.org/tequilarapido/php-serialized/downloads.png)](https://packagist.org/packages/tequilarapido/php-serialized) 
+[![License](https://poser.pugx.org/tequilarapido/php-serialized/license.png)](https://packagist.org/packages/tequilarapido/php-serialized)
+
 
 Can be used to replace strings in PHP serialized strings.
 (take a look at the tests)
